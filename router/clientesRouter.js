@@ -10,5 +10,7 @@ router.post("/", clientesControllers.crearClientes);
 router.delete("/:id_cliente", clientesControllers.eliminarClientesPorId);
 router.put("/:id_cliente", clientesControllers.actualizarClientesPorId);
 
+router.post("/iniciarSesion", clientesControllers.iniciarSesionCliente);
+
 module.exports = router;
 

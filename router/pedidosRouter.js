@@ -1,13 +1,13 @@
 const express = require("express");
-const categoriasControllers = require("../controllers/pedidosControllers");
+const pedidosController = require("../controllers/pedidosControllers");
 
 const router = express.Router();
 
-// !Rutas para las categorias
-router.get("/", pedidosControllers.obtenerPedidos);
-router.get("/:id_pedido", pedidosControllers.obtenerPedidosPorId);
-router.post("/", pedidosControllers.crearPedidos);
-router.delete("/:id_pedido", pedidosControllers.eliminarPedidosPorId);
-router.put("/:id_pedido", pedidosControllers.actualizarPedidosPorId);
+// Rutas para los pedidos
+router.get("/", pedidosController.obtenerPedidos);
+router.get("/:id_pedido", pedidosController.obtenerPedidoPorId);
+router.post("/", pedidosController.crearPedido);
+router.put("/:id_pedido", pedidosController.actualizarPedidoPorId);
+router.delete("/:id_pedido", pedidosController.eliminarPedidoPorId);
 
 module.exports = router;

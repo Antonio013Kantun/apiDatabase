@@ -35,11 +35,11 @@ const obtenerProductosPorId = (req, res) => {
 
 
 const crearProductos = (req, res) => {
-const { nombre, descripcion, precio, imagen } = req.body;
+const { nombre, descripcion, precio, imagen, stock } = req.body;
 
   connection.query(
-    "INSERT INTO productos (nombre, descripcion, precio, imagen) VALUES (?,?,?,?)",
-    [nombre, descripcion, precio, imagen],
+    "INSERT INTO productos (nombre, descripcion, precio, imagen, stock) VALUES (?,?,?,?,?)",
+    [nombre, descripcion, precio, imagen, stock],
     (error, results) => {
       if (error) {
         console.error("Errors al agregar producto", error);
@@ -56,9 +56,9 @@ const { nombre, descripcion, precio, imagen } = req.body;
 
 const actualizarProductosPorId = (req, res) => {
   const id = req.params.id_producto;
-  const { nombre, descripcion, precio, imagen } = req.body;
+  const { nombre, descripcion, precio, imagen, stock } = req.body;
   connection.query(
-    "UPDATE productos SET nombre =?, descripcion = ?, precio=?, imagen=? WHERE id_producto =?",[nombre, descripcion, precio, imagen,id],(error, results) => {
+    "UPDATE productos SET nombre =?, descripcion = ?, precio=?, imagen=?, stock=? WHERE id_producto =?",[nombre, descripcion, precio, imagen, stock, id],(error, results) => {
       if (error) {
         console.error("Error al actualizar producto", error);
         res.status(500).json({error: "Error al actualizar producto"});
